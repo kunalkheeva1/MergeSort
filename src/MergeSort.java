@@ -21,6 +21,44 @@ public class MergeSort {
         }
         mergeSort(leftHalf);
         mergeSort(rightHalf);
+        merge(arr,leftHalf,rightHalf);
+    }
+    //now creating a method to merge the elements
+    //will take the input of lefthalf and righthalf and add them in arr wrt ascending order
+
+    public static void merge(int[]arr, int[] leftHalf,int []rightHalf){
+        int leftSize= leftHalf.length;
+        int rightSize= rightHalf.length;
+        int i= 0, j=0, k=0;
+        // now creating a scenario in the loop
+        while(i<leftSize && j<rightSize ){            // this means, until the both arrays got emptied
+
+           // if the element in left side is smaller then it will be stored in new array
+
+            if (leftHalf[i]<=rightHalf[j]){
+                    arr[k]= leftHalf[i];
+                    i++;        //then moves to next element on left side
+
+            }else{                      //else the right side's element will be stored
+                arr[k]= rightHalf[j];
+                j++;            //then moves to the next element of right side
+            }k++;               // and yes move to next positions of new array too
+        }
+
+        //now if the loops condition is not true then there will be two cases
+
+        // basically these two loops are for the remaining elements of left side and right side
+        while(i<leftSize){
+            arr[k]= leftHalf[i];
+            i++;
+            k++;
+        }
+
+        while (j<rightSize){
+            arr[k]= rightHalf[j];
+            j++;
+            k++;
+        }
     }
 
 
